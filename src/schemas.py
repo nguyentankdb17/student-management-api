@@ -2,6 +2,7 @@ from datetime import date
 from pydantic import BaseModel
 
 class StudentBase(BaseModel):
+    id: int
     name: str
     gender: str
     dob: date
