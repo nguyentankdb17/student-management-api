@@ -8,10 +8,13 @@ from fastapi import APIRouter
 from database import get_db
 
 # Initialize the router
-router = APIRouter()
+router = APIRouter(
+    prefix="/students",
+    tags=["students"]
+)
 
 # Define the routes for getting the students list
-@router.get("/", response_model=List[schemas.StudentBase])
+@router.get("/list", response_model=List[schemas.StudentBase])
 def get_students(db: Session = Depends(get_db)):
     students = db.query(models.Student).all()
     return students
